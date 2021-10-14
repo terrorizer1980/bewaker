@@ -5,7 +5,15 @@ version: '3.8'
 # here: https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
 #
 services:
-
+  database:
+    image: postgres:latest
+    container_name: bewaker_database
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: hackerone_test
+    ports:
+      - 5433:5432
   opa:
     container_name: opa_prototype_opa
     image: openpolicyagent/opa:0.29.4

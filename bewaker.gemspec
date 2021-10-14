@@ -26,4 +26,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency 'gem-release', '2.2.1'
+  spec.add_dependency 'activerecord', '>= 5.0.0', '< 6.0.4'
+  spec.add_dependency 'pg'
+
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'pry-nav'
+  spec.add_development_dependency 'pry-doc'
+  spec.add_development_dependency 'pry-rescue'
+  spec.add_development_dependency 'pry-stack_explorer'
+  spec.add_development_dependency 'pry-alias'
 end
