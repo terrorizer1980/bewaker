@@ -1,0 +1,24 @@
+version: '3.8'
+
+# Keep in mind that because we are running a single node cluster, the health check
+# of the cluster will always return `yellow` instead of `green`, as described
+# here: https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+#
+services:
+
+  opa:
+    container_name: opa_prototype_opa
+    image: openpolicyagent/opa:0.29.4
+    volumes:
+    - ./app/policies:/bundles
+    ports:
+      - "8181:8181"
+    command:
+    - "run"
+    - "--bundle"
+    - "--watch"
+    - "--server"
+    - "--log-level=debug"
+    - "--log-format=json-pretty"
+    - "--set=decision_logs.console=true"
+    - "/bundles"
